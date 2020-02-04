@@ -48,6 +48,7 @@ public class Message {
 		// decapsulate the data contained in the received byte array and store it 
 		// in the payload of this message
 		int sizeOfMsg = received[0];
+		int yo = 10;
 		byte[] tempArray = new byte[sizeOfMsg];
 		for (int i = 0; i < sizeOfMsg; i++) {
 			tempArray[i] = received[i + 1];
