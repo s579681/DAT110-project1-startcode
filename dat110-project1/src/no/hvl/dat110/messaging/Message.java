@@ -53,6 +53,7 @@ public class Message {
 			tempArray[i] = received[i + 1];
 		}
 		this.payload = tempArray;
+		//test endrnhg
 		/*
 		throw new UnsupportedOperationException(TODO.method());
 		*/

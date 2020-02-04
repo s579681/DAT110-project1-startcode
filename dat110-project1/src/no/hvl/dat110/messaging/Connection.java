@@ -37,6 +37,8 @@ public class Connection {
 		// Hint: use the encapsulate method on the message
 		//throw new UnsupportedOperationException(TODO.method());
 		outStream = message.encapsulate();
+		
+		
 	}
 
 	public Message receive() {
