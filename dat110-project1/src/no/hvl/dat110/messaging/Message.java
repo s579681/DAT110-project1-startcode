@@ -1,7 +1,6 @@
 package no.hvl.dat110.messaging;
 
 import java.util.Arrays;
-
 import no.hvl.dat110.TODO;
 
 public class Message {
@@ -38,7 +37,6 @@ public class Message {
 		if (true)
 		   throw new UnsupportedOperationException(TODO.method());
 		*/
-		//eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeetest
 		
 	}
 
@@ -54,7 +52,6 @@ public class Message {
 			tempArray[i] = received[i + 1];
 		}
 		this.payload = tempArray;
-		//test endrnhg
 		/*
 		throw new UnsupportedOperationException(TODO.method());
 		*/
