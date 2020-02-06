@@ -57,6 +57,7 @@ public class Connection {
 			throw new RuntimeException("not yet implemented");
 		}
 		*/
+		//Hvordan er  dette riktig?, Er ikke recvbuf[] helt tom?
 		recvbuf = new byte[128];
 		message = new Message(recvbuf);
 		message.decapsulate(recvbuf);
