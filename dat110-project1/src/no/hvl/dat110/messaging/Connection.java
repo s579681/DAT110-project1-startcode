@@ -57,15 +57,15 @@ public class Connection {
 			throw new RuntimeException("not yet implemented");
 		}
 		*/
-		recvbuf = message.decapsulate(message);
+		recvbuf = new byte[128];
+		message = new Message(recvbuf);
+		message.decapsulate(recvbuf);
+		
 		try {
-			inStream.read(recvbuf);
+			inStream.read(message.getData());
 		} catch (IOException ex) {
 			System.out.println(ex.toString());
 		}
-		
-		
-
 		return message;
 
 	}
