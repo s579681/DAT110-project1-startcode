@@ -1,12 +1,6 @@
 package no.hvl.dat110.rpc;
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.util.Arrays;
-
-import com.sun.corba.se.impl.ior.ByteBuffer;
-
-import no.hvl.dat110.TODO;
+import java.nio.ByteBuffer;
 import no.hvl.dat110.messaging.MessageConfig;
 
 public class RPCUtils {
@@ -48,7 +42,7 @@ public class RPCUtils {
 		}
 		decoded = new String(tempDataArray).trim();
 		
-		
+		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
@@ -59,16 +53,14 @@ public class RPCUtils {
 	public static byte[] marshallVoid(byte rpcid) {
 
 		byte[] encoded;
-		
+		// TODO: marshall RPC identifier in case of void type
 		encoded = new byte[MessageConfig.SEGMENTSIZE];
 		encoded[0] = rpcid;
-		// TODO: marshall RPC identifier in case of void type
 		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
 		*/
-		
 		return encoded;
 
 	}
@@ -106,10 +98,13 @@ public class RPCUtils {
 		// TODO: marshall RPC identifier and string into byte array
 		encoded = new byte[MessageConfig.SEGMENTSIZE];
 		encoded[0] = rpcid;
-		byte[] xInByteArray = new byte[4];
-		ByteBuffer byteBuffer = ByteBuffer.allocate(4);
-		intParameter.byteValue();
-		 
+		ByteBuffer byteBuff = ByteBuffer.allocate(4);
+		byteBuff.putInt(x);
+		byte[] tempByteArray = byteBuff.array();
+		
+		for (int i = 0; i < tempByteArray.length; i++) {
+			encoded[i+1] = tempByteArray[i]; 
+		}
 		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
@@ -123,11 +118,16 @@ public class RPCUtils {
 		int decoded;
 
 		// TODO: unmarshall integer contained in data
-
+		byte[] tempByteArray = new byte[data.length - 1];
+		for (int i = 0; i < tempByteArray.length; i++) {
+			tempByteArray[i] = data[i+1];
+		}
+		decoded = ByteBuffer.wrap(tempByteArray).getInt();
+		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
-
+		*/
 		return decoded;
 
 	}
