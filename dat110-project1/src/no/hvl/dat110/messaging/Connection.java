@@ -57,18 +57,19 @@ public class Connection {
 			throw new RuntimeException("not yet implemented");
 		}
 		*/
-		//Hvordan er  dette riktig?, Er ikke recvbuf[] helt tom?
-		recvbuf = new byte[128];
-		message = new Message(recvbuf);
-		message.decapsulate(recvbuf);
+		//RIKTIG, endret i lab Er ikke recvbuf[] helt tom?
 		
+		recvbuf = new byte[MessageConfig.SEGMENTSIZE];
 		try {
-			inStream.read(message.getData());
+			inStream.read(recvbuf,0, MessageConfig.SEGMENTSIZE); 
 		} catch (IOException ex) {
 			System.out.println(ex.toString());
 		}
+		
+		message = new Message();
+		message.decapsulate(recvbuf);
+		
 		return message;
-
 	}
 
 	// close the connection by closing streams and the underlying socket
