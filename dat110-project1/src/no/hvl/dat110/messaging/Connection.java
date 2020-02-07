@@ -57,7 +57,7 @@ public class Connection {
 			throw new RuntimeException("not yet implemented");
 		}
 		*/
-		//RIKTIG, endret i lab Er ikke recvbuf[] helt tom?
+		//RIKTIG, endret i lab
 		
 		recvbuf = new byte[MessageConfig.SEGMENTSIZE];
 		try {

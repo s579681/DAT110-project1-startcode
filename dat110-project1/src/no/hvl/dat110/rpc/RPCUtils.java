@@ -1,8 +1,13 @@
 package no.hvl.dat110.rpc;
 
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.util.Arrays;
 
+import com.sun.corba.se.impl.ior.ByteBuffer;
+
 import no.hvl.dat110.TODO;
+import no.hvl.dat110.messaging.MessageConfig;
 
 public class RPCUtils {
 
@@ -16,10 +21,18 @@ public class RPCUtils {
 		byte[] encoded;
 
 		// TODO: marshall RPC identifier and string into byte array
-
+		encoded = new byte[MessageConfig.SEGMENTSIZE];
+		encoded[0] = rpcid;
+		byte[] tempStrArray = str.getBytes();
+		
+		for (int i = 0; i < tempStrArray.length; i++) {
+			encoded[i+1] = tempStrArray[i];
+		}
+		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
+		*/
 
 		return encoded;
 	}
@@ -29,24 +42,33 @@ public class RPCUtils {
 		String decoded;
 
 		// TODO: unmarshall String contained in data into decoded
-
+		byte[] tempDataArray = new byte[MessageConfig.SEGMENTSIZE];
+		for (int i = 0; i < data.length - 1; i++) {
+			tempDataArray[i] = data[i+1];
+		}
+		decoded = new String(tempDataArray).trim();
+		
+		
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
-
+		*/
 		return decoded;
 	}
 
 	public static byte[] marshallVoid(byte rpcid) {
 
 		byte[] encoded;
-
+		
+		encoded = new byte[MessageConfig.SEGMENTSIZE];
+		encoded[0] = rpcid;
 		// TODO: marshall RPC identifier in case of void type
-
+		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
-
+		*/
+		
 		return encoded;
 
 	}
@@ -54,6 +76,7 @@ public class RPCUtils {
 	public static void unmarshallVoid(byte[] data) {
 
 		// TODO: unmarshall void type
+		
 	}
 
 	public static byte[] marshallBoolean(byte rpcid, boolean b) {
@@ -80,13 +103,18 @@ public class RPCUtils {
 	public static byte[] marshallInteger(byte rpcid, int x) {
 
 		byte[] encoded;
-
 		// TODO: marshall RPC identifier and string into byte array
-
+		encoded = new byte[MessageConfig.SEGMENTSIZE];
+		encoded[0] = rpcid;
+		byte[] xInByteArray = new byte[4];
+		ByteBuffer byteBuffer = ByteBuffer.allocate(4);
+		intParameter.byteValue();
+		 
+		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
-
+		*/
 		return encoded;
 	}
 
