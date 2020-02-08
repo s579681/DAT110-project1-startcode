@@ -26,7 +26,7 @@ public class Message {
 		// encapulate/encode the payload of this message in the
 		// encoded byte array according to message format
 		//type casting: byte –> short –> int –> long –> float –> double
-		encoded = new byte[128];
+		encoded = new byte[MessageConfig.SEGMENTSIZE];
 		int sizeOfMsg = payload.length;
 		encoded[0] =(byte) sizeOfMsg;
 		

@@ -47,13 +47,18 @@ public class RPCClient {
 		
 		rpcrequest is the marshalled rpcrequest from the client-stub
 		rpctreply is the rpcreply to be unmarshalled by the client-stub
-		
 		*/
+		Message msg = new Message(rpcrequest);
+		connection.send(msg);
+		Message replyMsg = connection.receive();
+		rpcreply = replyMsg.getData();
+		//Usikker om funker...
+		/*
 		
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
-		
+		*/
 		return rpcreply;
 		
 	}

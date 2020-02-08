@@ -41,8 +41,7 @@ public class Connection {
 			outStream.write(encapedMsg);
 		} catch (IOException ex) {
 			System.out.println(ex.toString());
-		}
-		//socket?
+		} 
 		
 	}
 
