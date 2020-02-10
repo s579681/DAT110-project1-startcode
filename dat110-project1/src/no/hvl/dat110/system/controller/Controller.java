@@ -3,6 +3,7 @@ package no.hvl.dat110.system.controller;
 import no.hvl.dat110.TODO;
 import no.hvl.dat110.rpc.RPCClient;
 import no.hvl.dat110.rpc.RPCServerStopStub;
+import static java.lang.Thread.sleep;
 
 public class Controller  {
 	
@@ -25,12 +26,23 @@ public class Controller  {
 		
 		// TODO
 		// connect to sensor and display RPC servers
+		sensorclient.connect();
+		displayclient.connect();
 		// create local display and sensor objects
+		sensor = new Sensor();
+		display = new Display();
 		// register display and sensor objects in the RPC layer
+		displayclient.register(display);
+		sensorclient.register(sensor);
 		
+		
+		
+		
+		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 		}
+		*/
 		
 		// register stop methods in the RPC layer
 		displayclient.register(stopdisplay);
@@ -38,10 +50,22 @@ public class Controller  {
 		
 		// TODO:
 		// loop while reading from sensor and write to display via RPC
-		
+		int i = 0;
+		while(i < N){
+			int temp = sensor.read();
+			try{
+				sleep(1000);
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
+			display.write(Integer.toString(temp));
+			i++;
+		}
+		/*
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
 			}
+		*/
 		
 		stopdisplay.stop();
 		stopsensor.stop();

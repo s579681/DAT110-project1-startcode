@@ -26,6 +26,7 @@ public class MessagingServer {
 	// accept an incoming connection from a client
 	public Connection accept() {
 
+		Socket socket;
 		Connection connection = null;
 
 		
@@ -33,7 +34,8 @@ public class MessagingServer {
 		// accept TCP connection on welcome socket and create messaging connection
 
 		try {
-			connection = new Connection(welcomeSocket.accept());
+			socket = welcomeSocket.accept();
+			connection = new Connection(socket);
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}

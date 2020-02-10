@@ -8,7 +8,12 @@ public class Message {
 	private byte[] payload;
 
 	public Message(byte[] payload) {
-		this.payload = payload; // TODO: check for length within boundary
+		// TODO: check for length within boundary
+		if (payload.length <= MessageConfig.SEGMENTSIZE) {
+			this.payload = payload;
+		}else{
+			throw new IllegalArgumentException("Payload size is too large.");
+		}
 	}
 
 	public Message() {
@@ -27,11 +32,10 @@ public class Message {
 		// encoded byte array according to message format
 		//type casting: byte –> short –> int –> long –> float –> double
 		encoded = new byte[MessageConfig.SEGMENTSIZE];
-		int sizeOfMsg = payload.length;
-		encoded[0] =(byte) sizeOfMsg;
-		
+		encoded[0] = (byte) payload.length;
 		for (int i = 0; i < payload.length; i++) {
-			encoded[i + 1] = payload[i];		}
+				encoded[i + 1] = payload[i];		
+		}
 		return encoded;
 		/*
 		if (true)

@@ -46,8 +46,8 @@ public class Connection {
 	}
 
 	public Message receive() {
-		Message message;
-		byte[] recvbuf;
+		Message message = new Message();
+		byte[] recvbuf = null;
 		// TODO
 		// read a segment (128 bytes) from the input stream and decapsulate into message
 		// Hint: create a new Message object and use the decapsulate method
@@ -65,10 +65,8 @@ public class Connection {
 			System.out.println(ex.toString());
 		}
 		
-		message = new Message();
-		message.decapsulate(recvbuf);
-		
-		return message;
+        message.decapsulate(recvbuf);
+        return message;
 	}
 
 	// close the connection by closing streams and the underlying socket
