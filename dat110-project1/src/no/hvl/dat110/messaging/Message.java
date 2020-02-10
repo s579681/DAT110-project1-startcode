@@ -33,7 +33,7 @@ public class Message {
 		//type casting: byte –> short –> int –> long –> float –> double
 		encoded = new byte[MessageConfig.SEGMENTSIZE];
 		encoded[0] = (byte) payload.length;
-		for (int i = 0; i < payload.length; i++) {
+		for (int i = 0; i < payload.length - 1; i++) {
 				encoded[i + 1] = payload[i];		
 		}
 		return encoded;
