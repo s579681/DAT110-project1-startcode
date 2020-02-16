@@ -26,14 +26,14 @@ public class Message {
 
 	public byte[] encapsulate() {
 		
-		byte[] encoded = null;
+		byte[] encoded;
 		// TODO
 		// encapulate/encode the payload of this message in the
 		// encoded byte array according to message format
 		//type casting: byte –> short –> int –> long –> float –> double
 		encoded = new byte[MessageConfig.SEGMENTSIZE];
 		encoded[0] = (byte) payload.length;
-		for (int i = 0; i < payload.length - 1; i++) {
+		for (int i = 0; i < payload.length-1; i++) {
 				encoded[i + 1] = payload[i];		
 		}
 		return encoded;
@@ -55,7 +55,7 @@ public class Message {
 		for (int i = 0; i < sizeOfMsg; i++) {
 			tempArray[i] = received[i + 1];
 		}
-		this.payload = tempArray;
+		payload = tempArray;
 		/*
 		throw new UnsupportedOperationException(TODO.method());
 		*/

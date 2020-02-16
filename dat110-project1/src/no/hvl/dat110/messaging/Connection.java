@@ -60,7 +60,9 @@ public class Connection {
 		
 		recvbuf = new byte[MessageConfig.SEGMENTSIZE];
 		try {
-			inStream.read(recvbuf,0, MessageConfig.SEGMENTSIZE); 
+			inStream.read(recvbuf,0, MessageConfig.SEGMENTSIZE);
+			System.out.println(recvbuf.length);
+			System.out.println("******");
 		} catch (IOException ex) {
 			System.out.println(ex.toString());
 		}

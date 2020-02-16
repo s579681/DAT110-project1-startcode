@@ -53,6 +53,7 @@ public class Controller  {
 		int i = 0;
 		while(i < N){
 			int temp = sensor.read();
+			System.out.println(temp);
 			try{
 				sleep(1000);
 			}catch(InterruptedException e){

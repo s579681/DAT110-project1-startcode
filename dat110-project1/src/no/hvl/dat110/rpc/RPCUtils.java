@@ -118,6 +118,8 @@ public class RPCUtils {
 		int decoded;
 
 		// TODO: unmarshall integer contained in data
+		System.out.println(data.length);
+		System.out.println("*****");
 		byte[] tempByteArray = new byte[data.length - 1];
 		for (int i = 0; i < tempByteArray.length; i++) {
 			tempByteArray[i] = data[i+1];
